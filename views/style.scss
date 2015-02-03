@@ -1,0 +1,44 @@
+html, body {
+  margin: 0;
+
+  line-height: 1.62em;
+  font-family: 'Slabo 27px', serif;
+  font-size: 24px;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #53ADC6;
+}
+
+.content {
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+table {
+  width: 100%;
+  thead {
+    text-align: left;
+  }
+  th {
+    border-bottom: 1px solid #aaa;
+  }
+  th, td {
+    padding: .5em;
+    padding-left: 0.5em;
+    padding-right: 3.5em;
+    &:last-child { padding-right: 0.5em; }
+  }
+  tr:nth-child(2n) {
+    background-color: #eee;
+  }
+  font-size: 1rem;
+}
