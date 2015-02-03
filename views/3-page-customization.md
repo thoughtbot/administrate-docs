@@ -70,12 +70,7 @@ The generated view for an index page will look something like this:
                       value,
                       resource
                     ).html_safe %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <!-- ...closing tags... -->
 
 But you can easily customize it into anything you like,
 with the Rails tools you know and love.
