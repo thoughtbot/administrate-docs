@@ -43,3 +43,22 @@ Common types and their behaviors:
 | password | hidden            | hidden            | password field |
 | has_one  | linked item title | linked item title | select box     |
 | has_many | count             | linked item list  | dunno yet      |
+
+### Key Attributes
+
+You can specify a key attribute on a model:
+
+```ruby
+Administrate.register User do |user|
+  user.key :name
+
+  user.string :name, index: true
+  # ...
+end
+```
+
+Key attributes will be used as identifiers for the resource
+throughout the admin dashboard.
+
+On a resource's index page,
+the key attribute will be a link to the show page.
