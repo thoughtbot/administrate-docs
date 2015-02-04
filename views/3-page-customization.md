@@ -19,7 +19,7 @@ rails generate administrate:views:edit User
 # Generates app/views/administrate/users/edit.html.erb
 # Generates app/views/administrate/users/_form.html.erb
 
-rails generate administrate:views:edit User
+rails generate administrate:views:new User
 # Generates app/views/administrate/users/new.html.erb
 # Generates app/views/administrate/users/_form.html.erb
 
