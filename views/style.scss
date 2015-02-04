@@ -2,13 +2,24 @@ html, body {
   margin: 0;
 
   line-height: 1.62em;
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Lato', serif;
   font-size: 18px;
+}
+
+img {
+  width: 100%;
 }
 
 h1, h2, h3 {
   margin-top: 2em;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+code {
+  font-size: .8rem;
+  background-color: #f0f0f0;
+  padding: .4em .2em 0;
+  font-family: 'Source Code Pro', ;
 }
 
 a {
