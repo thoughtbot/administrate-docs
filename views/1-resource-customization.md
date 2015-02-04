@@ -6,7 +6,11 @@ Before creating a resource you must first create a Rails model for it.
 ## Create a Resource
 
 The basic command for creating a resource is
-`rails g administrate:resource User`.
+
+```
+rails generate administrate:resource User
+```
+
 The generator will produce an empty `app/admin/user.rb` file like so:
 
 ```ruby
@@ -29,12 +33,17 @@ Administrate.register User do |user|
 end
 ```
 
+The statement `user.string :name` tells Administrate
+that a user's name should be treated as a string.
+Administrate will see to that by displaying it in a `<span>`
+on the index and show pages, and by creating a text field for it in forms.
+
 By defining the type of each of the resource's attributes,
 you're telling Administrate how to display it on each page of the dashboard.
 
 Common types and their behaviors:
 
-| adapter  | core? | index             | show              | forms          |
+| adapter  | core? | index page        | show page         | forms          |
 | -------- | ----- | ----------------- | ----------------- | -------------- |
 | string   | yes   | plain text        | plain text        | text field     |
 | text     | yes   | truncated text    | full text         | text area      |
@@ -46,40 +55,10 @@ Common types and their behaviors:
 | image    | no    | image tag         | image tag         | file upload    |
 | address  | no    | formatted address | formatted address | address fields |
 
-## Handling Custom Attributes
+It's possible to [define custom attribute handlers],
+but in most cases you'll be able to find a gem to do the work for you.
 
-If your model has an attribute that's not handled by Administrate
-(say, for example, geoJSON data),
-it's easy to write your own adapter for it.
-
-Attribute adapters are simple classes that define how to present an attribute
-in Administrate's interfaces.
-
-To write your own, simply implement the class...
-
-    class GeoJsonAdapter < Administrate::Adapters::TextAdapter
-      def render
-    <<-HTML
-      <div class="geojson" data-geometry=#{attribute_value}></div>
-      <script src="/scripts/render_geojson.js" />
-    HTML
-      end
-
-      # for the form field, this adapter will inherit behavior from TextAdapter,
-      # and display a text area.
-    end
-
-... register your adapter with Administrate ...
-
-    # config/initializers/administrate.rb
-    Administrate::Adapters.register(:geometry, GeoJsonAdapter)
-
-... and then use the adapter in your resources!
-
-    Administrate.register Neighborhood do |neighborhood|
-      neighborhood.string :name
-      neighborhood.geometry :coordinates
-    end
+[define custom attribute handlers]: 2-1-custom-attribute-adapters.md
 
 ### Key Attributes
 

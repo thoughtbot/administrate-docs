@@ -40,7 +40,8 @@ You probably won't need to use it yourself.
 
 ### Example
 
-The generated view for an index page will look something like this:
+After running `rails generate administrate:views:index User`,
+the generated view will look something like this:
 
     <h1><%= @presenter.plural_class_name.titleize %></h1>
 
@@ -60,16 +61,10 @@ The generated view for an index page will look something like this:
       <tbody>
         <% @resources.each do |resource| %>
           <tr>
-            <% @presenter.attributes_for(
-                 resource,
-                 :index
-               ).each do |attr, value| %>
+            <% @presenter.attribute_names(:index).each do |attr_name| %>
               <td>
-                <%= @presenter.render_attribute(
-                      attr,
-                      value,
-                      resource
-                    ).html_safe %>
+                <%= @presenter.render_attribute(resource, attr_name) %>
+              </td>
     <!-- ...closing tags... -->
 
 But you can easily customize it into anything you like,
@@ -77,9 +72,9 @@ with the Rails tools you know and love.
 
     <h1>Our awesome users!</h1>
 
-    <% @resources.each do |resource| %>
-      <div class="resource">
-        <%= link_to resource.name, admin_resource_path(resource) %>
+    <% @resources.each do |user| %>
+      <div class="user">
+        <%= link_to user.name, admin_user_path(user) %>
         <%= # ... %>
       </div>
     <% end %>
