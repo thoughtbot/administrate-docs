@@ -1,3 +1,8 @@
+$blue: #53ADC6;
+$red: #CF726E;
+$green: #5BC89E;
+$white: #f0f0f0;
+
 html, body {
   margin: 0;
 
@@ -17,14 +22,14 @@ h1, h2, h3 {
 
 code {
   font-size: .8rem;
-  background-color: #f0f0f0;
+  background-color: $white;
   padding: .4em .2em 0;
   font-family: 'Source Code Pro', ;
 }
 
 a {
   text-decoration: none;
-  color: #53ADC6;
+  color: $blue;
 }
 
 .content {
@@ -33,6 +38,18 @@ a {
   margin-right: auto;
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+.flash-wrapper {
+  background-color: $red;
+  padding: 1em;
+  color: $white;
+
+  .flash {
+    width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 table {
