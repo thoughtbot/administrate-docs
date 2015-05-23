@@ -13,6 +13,6 @@ get "/" do
   markdown "README".to_sym, :layout_engine => :erb
 end
 
-get "/:page.md" do
+get "/:page" do
   markdown params[:page].to_sym, :layout_engine => :erb
 end
