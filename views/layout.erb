@@ -15,13 +15,24 @@
   </div>
 
   <div class="content">
-    <a href="/">Home</a> |
-    <a href="https://github.com/thoughtbot/administrate/issues/new">Feedback?</a>
+    <div class="sidebar">
+      <h1>Administrate</h1>
 
-    <%= yield %>
+      <ul class="sidebar-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="https://github.com/thoughtbot/administrate/issues/new">Feedback</a></li>
+      </ul>
 
-    <a href="/">Home</a> |
-    <a href="https://github.com/thoughtbot/administrate/issues/new">Feedback?</a>
+      <h3>Documentation</h3>
+
+      <ul class="sidebar-links">
+        <li><a href="/">README</a></li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

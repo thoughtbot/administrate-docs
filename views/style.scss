@@ -33,11 +33,25 @@ a {
 }
 
 .content {
-  width: 40em;
+  width: 61em;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
   margin-bottom: 2em;
+
+  .sidebar {
+    width: 20em;
+    float: left;
+    &-links {
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+
+  .main {
+    width: 40em;
+    float: right;
+  }
 }
 
 .flash-wrapper {
