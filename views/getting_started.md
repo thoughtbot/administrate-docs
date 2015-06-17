@@ -16,16 +16,29 @@ Re-bundle, then run the installer:
 $ rails generate administrate:install
 ```
 
-The installer creates a few files:
+The installer creates a few files.
+Two of them are standard for any installation:
 
-- `app/controllers/admin/dashboard_controller.rb`
+- `app/controllers/admin/application_controller.rb`
 - `app/dashboards/dashboard_manifest.rb`
 
-The `DashboardController` can be customized to add authentication logic,
-authorization, pagination, or other controller-level concerns.
+In addition, the generator creates a `Dashboard` and a `Controller` for each of
+your ActiveRecord resources:
 
-`DashboardManifest` can be customized to show or hide
+- `app/controllers/admin/foos_controller.rb`
+- `app/dashboards/foo_dashboard.rb`
+
+The `Admin::ApplicationController` can be customized to add
+authentication logic, authorization, pagination,
+or other controller-level concerns.
+
+The `DashboardManifest` can be customized to show or hide
 different models on the dashboard.
+
+Each `FooDashboard` specifies which attributes should be displayed
+on the admin dashboard for the `Foo` resource.
+
+Each `Admin::FooController` can be overwritten to specify custom behavior.
 
 The installer will also add a line to your `config/routes.rb` file:
 
@@ -37,71 +50,5 @@ The installer will also add a line to your `config/routes.rb` file:
   root controller: DashboardManifest.new.root_dashboard, action: :index
 ```
 
-Visit http://localhost:3000/admin to see your new dashboards in action.
-
-Generated `DashboardController`:
-
-```ruby
-# app/controllers/admin/dashboard_controller.rb
-
-# `Admin::DashboardController`
-# Public API
-#
-# All Administrate controllers inherit from this `DashboardController`,
-# making it the ideal place to put authentication logic or other
-# `before_filter`s.
-#
-# If you want to add pagination, overwrite the RESTful controller actions.
-# For more information, see [TODO].
-class Admin::DashboardController < ApplicationController
-  include Adminsitrate::RestActions
-
-  before_filter :authenticate_admin
-
-  def authenticate_admin
-    # TODO Add authentication logic here.
-  end
-end
-```
-
-Generated `DashboardManifest`:
-
-```ruby
-# app/dashboards/dashboard_manifest.rb
-
-# `DashboardManifest`
-# Public API
-#
-# DashboardManifest provides some information about the dashboards displayed
-# by Administrate.
-class DashboardManifest
-  # `#dashboards`
-  # Returns a list of dashboards to display in the side navigation menu
-  #
-  # These are all of the rails models that we found in your database
-  # at the time you installed Administrate.
-  #
-  # To show or hide dashboards, add or remove the model name from this list.
-  # Dashboards returned from this method must be Rails models for Administrate
-  # to work correctly.
-  def dashboards
-    [
-      :customers,
-      :line_items,
-      :orders,
-      :products,
-    ]
-  end
-
-  # `#root_dashboard`
-  # Returns the name of the dashboard that will be displayed
-  # at "http://your_site.com/admin"
-  #
-  # This dashboard will likely be the first page that admins see
-  # when they log into the dashboard.
-  def root_dashboard
-    dashboards.first
-  end
-end
-```
-
+Feel free to customize these routes to your heart's content,
+then visit http://localhost:3000/admin to see your new dashboards in action.

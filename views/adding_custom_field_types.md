@@ -37,6 +37,7 @@ how the field will be defined on each page.
 The easiest way to create the partials is with a generator:
 
 ```bash
+# Note: not implemented yet
 rails generate administrate:views:field gravatar
 ```
 

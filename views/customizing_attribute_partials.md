@@ -1,5 +1,7 @@
 # Customizing attribute partials
 
+## NOTE: very rough around the edges
+
 Occasionally you might want to change how specific types of attributes appear
 across all dashboards.
 For example, you might want all `float` values to round to three decimal points.

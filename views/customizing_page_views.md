@@ -4,6 +4,7 @@ In order to change the appearance of any page,
 you can provide custom Rails views:
 
 ```bash
+# Note: not implemented yet, but you can still override the view manually
 rails generate administrate:views:show
 ```
 
@@ -16,6 +17,7 @@ In order to change a dashboard page for a single type of resource,
 there are more specific template generators available:
 
 ```bash
+# Note: not implemented yet, but you can still override the view manually
 rails generate administrate:views:show customer
 ```
 
