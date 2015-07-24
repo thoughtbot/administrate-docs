@@ -12,12 +12,12 @@ class CustomerDashboard < Administrate::Dashboard::Base
 
   def attribute_types
     {
-      id: :integer,
-      name: :string,
-      email: :email,
-      created_at: :datetime,
-      updated_at: :datetime,
-      orders: :has_many,
+      id: Field::Integer,
+      name: Field::String,
+      email: Field::String,
+      created_at: Field:::DateTime,
+      updated_at: Field::DateTime,
+      orders: Field::HasMany,
     }
   end
 
@@ -57,17 +57,32 @@ To change which attributes appear on each of the `index`, `show`, and `edit`
 pages, add or remove attributes to the arrays returned from each method.
 
 Finally, the `attribute_types` method defines how each attribute is displayed
-throughout the dashboard. There are a number of recognized symbols that you can
-provide, including:
+throughout the dashboard. There are a number of `Field` classes that you can
+specify, including:
 
-- `belongs_to`
-- `datetime`
-- `float`
-- `has_many`
-- `integer`
-- `string`
+- `Field::BelongsTo`
+- `Field::Boolean`
+- `Field::DateTime`
+- `Field::Email`
+- `Field::HasMany`
+- `Field::HasOne`
+- `Field::Image`
+- `Field::Number`
+- `Field::Polymorphic`
+- `Field::String`
 
-Change attribute types until you find the best combination,
-or [define your own] for unusual data types.
+Each of the `Field` types take a different set of options,
+which are specified through the `.with_options` class method.
+For example, you might use the following to display currency,
+if the value is stored by the number of cents:
+
+```ruby
+  unit_price_in_cents: Field::Number.with_options(
+    title: "Unit Price",
+    prefix: "$",
+    multiplier: 0.01,
+    decimals: 2,
+  )
+```
 
 [define your own]: /adding_custom_field_types
