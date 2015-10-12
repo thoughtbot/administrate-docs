@@ -22,7 +22,6 @@ h1, h2, h3 {
 
 code {
   font-size: .8rem;
-  background-color: $white;
   padding: .4em .2em 0;
   font-family: 'Source Code Pro', ;
 }
@@ -84,4 +83,9 @@ table {
     background-color: #eee;
   }
   font-size: 1rem;
+}
+
+code.hljs {
+  background-color: #fff;
+  border-left: 6px solid $white;
 }
