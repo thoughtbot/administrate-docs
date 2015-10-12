@@ -1,14 +1,9 @@
 # Customizing controller actions
 
+When you install Administrate into your app,
+we generate empty controllers for each of your resources.
 If you want to create more complex application behavior for a dashboard,
-feel free to overwrite controller actions.
-
-First, generate a controller:
-
-```bash
-$ # note: not yet implemented
-$ rails generate administrate:controller Foo
-```
+simply overwrite controller actions.
 
 The generated controller will look something like:
 
