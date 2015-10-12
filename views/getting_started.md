@@ -51,4 +51,4 @@ The installer will also add a line to your `config/routes.rb` file:
 ```
 
 Feel free to customize these routes to your heart's content,
-then visit http://localhost:3000/admin to see your new dashboards in action.
+then visit <http://localhost:3000/admin> to see your new dashboard in action.
