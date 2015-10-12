@@ -23,7 +23,7 @@ module Administrate
   module Field
     class Gravatar < Administrate::Field::Base
       def gravatar_url
-        email_address = params[:email].downcase
+        email_address = data.downcase
         hash = Digest::MD5.hexdigest(email_address)
         "http://www.gravatar.com/avatar/#{hash}"
       end
@@ -37,7 +37,7 @@ how the field will be defined on each page.
 The easiest way to create the partials is with a generator:
 
 ```bash
-# Note: not implemented yet
+# Note: not implemented yet, but you can still create the files yourself.
 rails generate administrate:views:field gravatar
 ```
 
