@@ -1,29 +1,65 @@
 # Customizing page views
 
 In order to change the appearance of any page,
-you can provide custom Rails views:
+you can write custom Rails views.
+
+## Customizing for all resources
+
+The easiest way to get started is by using the built-in generators.
+In order to change the appearance of views for all resource types,
+call the generators with no arguments.
 
 ```bash
-# Note: not implemented yet, but you can still override the view manually
+rails generate administrate:views:index
+ # -> app/views/administrate/application/index.html.erb
+ # -> app/views/administrate/application/_table.html.erb
+
 rails generate administrate:views:show
+ # -> app/views/administrate/application/show.html.erb
+
+rails generate administrate:views:edit
+ # -> app/views/administrate/application/edit.html.erb
+ # -> app/views/administrate/application/_form.html.erb
+
+rails generate administrate:views:new
+ # -> app/views/administrate/application/new.html.erb
+ # -> app/views/administrate/application/_form.html.erb
+
+rails generate administrate:views
+ # -> all of the above
 ```
 
-... will generate `app/views/admin/dashboards/show.html.erb`.
+The generators copy over the default views that Administrate uses,
+so you have a good starting point for customizations.
+Feel free to change up the file type,
+add extra sections to the page,
+or blow it all away for your own custom look.
 
-Any changes to this template file will affect the show pages for each resource.
-Similar generators exist for `index` and `form` templates.
+## Customizing for a specific resource
 
 In order to change a dashboard page for a single type of resource,
-there are more specific template generators available:
+pass in the resource name to the view generators.
 
-```bash
-# Note: not implemented yet, but you can still override the view manually
-rails generate administrate:views:show customer
+```
+rails generate administrate:views:index User
+ # -> app/views/administrate/users/index.html.erb
+ # -> app/views/administrate/users/_table.html.erb
+
+rails generate administrate:views:show User
+ # -> app/views/administrate/users/show.html.erb
+
+rails generate administrate:views:edit User
+ # -> app/views/administrate/users/edit.html.erb
+ # -> app/views/administrate/users/_form.html.erb
+
+rails generate administrate:views:new User
+ # -> app/views/administrate/users/new.html.erb
+ # -> app/views/administrate/users/_form.html.erb
+
+rails generate administrate:views User
+ # -> all of the above
 ```
 
-... will generate `app/views/admin/customers/show.html.erb`.
-
-Any changes to this template file
-will *only* affect the show pages for customers,
-and leave the show pages for other resources unchanged.
-Similar generators exist for `index` and `form` templates.
+Any changes to these template files
+will *only* affect pages that display customers,
+and will leave the show pages for other resources unchanged.
