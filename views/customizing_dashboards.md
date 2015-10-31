@@ -9,54 +9,45 @@ By default, the file will look something like this:
 require "administrate/dashboard/base"
 
 class CustomerDashboard < Administrate::Dashboard::Base
+  ATTRIBUTE_TYPES = {
+    id: Field::Integer,
+    name: Field::String,
+    email: Field::String,
+    created_at: Field:::DateTime,
+    updated_at: Field::DateTime,
+    orders: Field::HasMany,
+  }
 
-  def attribute_types
-    {
-      id: Field::Integer,
-      name: Field::String,
-      email: Field::String,
-      created_at: Field:::DateTime,
-      updated_at: Field::DateTime,
-      orders: Field::HasMany,
-    }
-  end
+  COLLECTION_ATTRIBUTES = [
+    :id,
+    :name,
+    :email,
+    :created_at,
+    :updated_at,
+    :orders,
+  ]
 
-  def index_page_attributes
-    [
-      :id,
-      :name,
-      :email,
-      :created_at,
-      :updated_at,
-      :orders,
-    ]
-  end
+  SHOW_PAGE_ATTRIBUTES = [
+    :id,
+    :name,
+    :email,
+    :created_at,
+    :updated_at,
+    :orders,
+  ]
 
-  def show_page_attributes
-    [
-      :id,
-      :name,
-      :email,
-      :created_at,
-      :updated_at,
-      :orders,
-    ]
-  end
-
-  def form_attributes
-    [
-      :name,
-      :email,
-      :orders,
-    ]
-  end
+  FORM_ATTRIBUTES = [
+    :name,
+    :email,
+    :orders,
+  ]
 end
 ```
 
 To change which attributes appear on each of the `index`, `show`, and `edit`
-pages, add or remove attributes to the arrays returned from each method.
+pages, add or remove attributes to each constant array.
 
-Finally, the `attribute_types` method defines how each attribute is displayed
+Finally, the `ATTRIBUTE_TYPES` method defines how each attribute is displayed
 throughout the dashboard. There are a number of `Field` classes that you can
 specify, including:
 
