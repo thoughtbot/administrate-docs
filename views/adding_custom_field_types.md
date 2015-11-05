@@ -11,56 +11,49 @@ For example, let's create a `Field` that displays [Gravatars] based on an email.
 
 [Gravatars]: https://gravatar.com/
 
-First, we'll create a subclass of `Administrate::Field::Base`,
-with a helper method that will calculate the Gravatar URL for us.
+First, we'll run a generator to set us up with the files we need:
+
+```bash
+rails generate administrate:field gravatar
+```
+
+This creates a few files:
+
+- `app/fields/gravatar_field.rb`
+- `app/views/fields/gravatar_field/_show.html.erb`
+- `app/views/fields/gravatar_field/_index.html.erb`
+- `app/views/fields/gravatar_field/_form.html.erb`
+
+We can edit the `app/fields/gravatar_field.rb` to add some custom logic:
 
 ```ruby
-# lib/administrate/fields/gravatar.rb
-# (location of the file does not matter)
+# app/fields/gravatar_field.rb
 require 'digest/md5'
 
-module Administrate
-  module Field
-    class Gravatar < Administrate::Field::Base
-      def gravatar_url
-        email_address = data.downcase
-        hash = Digest::MD5.hexdigest(email_address)
-        "http://www.gravatar.com/avatar/#{hash}"
-      end
-    end
+class GravatarField < Administrate::Field::Base
+  def gravatar_url
+    email_address = data.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 end
 ```
 
-Next, we'll create partials to define
-how the field will be defined on each page.
-The easiest way to create the partials is with a generator:
-
-```bash
-# Note: not implemented yet, but you can still create the files yourself.
-rails generate administrate:views:field gravatar
-```
-
-After this, the process is the same as outlined
-on the [Customizing Attribute Partials] page.
-The generator creates three files:
-
-- `app/view/fields/form/_float.html.erb`
-- `app/view/fields/index/_float.html.erb`
-- `app/view/fields/show/_float.html.erb`
-
-Let's customize the `show` page. By default, it looks like:
+Next, we can customize the partials to display data how we'd like.
+Open up the `app/views/fields/gravatar_field/_show.html.erb` partial.
+By default, it looks like:
 
 ```eruby
-<%= gravatar.data %>
+<%= field.data %>
 ```
 
 Since we want to display an image, we can change it to:
 
 ```eruby
-<%= image_tag gravatar.data %>
+<%= image_tag field.gravatar_url %>
 ```
 
-You can customize the other generated partials in the same way.
+You can customize the other generated partials in the same way
+for custom behavior on the index and form pages.
 
 [Customizing Attribute Partials]: /customizing_attribute_partials
