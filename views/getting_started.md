@@ -43,11 +43,11 @@ Each `Admin::FooController` can be overwritten to specify custom behavior.
 The installer will also add a line to your `config/routes.rb` file:
 
 ```ruby
-  DashboardManifest.new.dashboards.each do |dashboard_resource|
-    resources dashboard_resource
-  end
+DashboardManifest.new.dashboards.each do |dashboard_resource|
+  resources dashboard_resource
+end
 
-  root controller: DashboardManifest.new.root_dashboard, action: :index
+root controller: DashboardManifest.new.root_dashboard, action: :index
 ```
 
 Feel free to customize these routes to your heart's content,

@@ -40,7 +40,7 @@ or blow it all away for your own custom look.
 In order to change a dashboard page for a single type of resource,
 pass in the resource name to the view generators.
 
-```
+```bash
 rails generate administrate:views:index User
  # -> app/views/administrate/users/index.html.erb
  # -> app/views/administrate/users/_table.html.erb

@@ -86,6 +86,23 @@ table {
 }
 
 code.hljs {
-  background-color: #fff;
-  border-left: 6px solid $white;
+  $black: #202020;
+  $white: #E0E0DC;
+  $green: #B0BF82;
+  $blue: #8FBDCC;
+  $cyan: #B95C56;
+  $yellow: #F8D29D;
+  $red: #B95C56;
+
+  background-color: $black;
+  color: $white;
+  padding-left: 1rem;
+
+  .hljs-string { color: $green; }
+  .hljs-constant { color: $blue; }
+  .hljs-symbol { color: $cyan; }
+  .hljs-keyword { color: $yellow; }
+  .hljs-title, .hljs-parent { color: $blue; }
+
+  .hljs-tag { color: $yellow; }
 }
