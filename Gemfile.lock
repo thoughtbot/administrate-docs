@@ -4,8 +4,6 @@ GEM
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
-    rdiscount (2.1.8)
-    sass (3.4.11)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -16,6 +14,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rdiscount
-  sass
   sinatra
+
+BUNDLED WITH
+   1.10.6
